@@ -30,3 +30,14 @@ def polacz(nazwa_bazy_danych):
         print(models)
         return True
 # ========= koniec funkcji polacz ======
+def czytajDane():
+    lista_wyp = []
+    wpisy = Sprzety.select()
+    for z in wpisy:
+        lista_wyp.append([
+            z.id,
+            z.nazwa,
+            z.opis,
+            z.uzytkownicy_id
+        ])
+    return lista_wyp
