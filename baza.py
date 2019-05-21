@@ -31,13 +31,29 @@ def polacz(nazwa_bazy_danych):
 # ========= koniec funkcji polacz ======
 def czytajDane():
     lista_wyp = []
-    wpisy = Sprzety.select()
+    wpisy = Sprzety.select(Sprzety.id,Sprzety.nazwa,Sprzety.opis,Uzytkownicy.nazwisko,Uzytkownicy.imie,Uzytkownicy.id).\
+        join(Uzytkownicy, on=(Sprzety.uzytkownicy_id == Uzytkownicy.id))
     for z in wpisy:
         lista_wyp.append([
             z.id,
             z.nazwa,
             z.opis,
-            z.uzytkownicy_id ])
+            z.uzytkownicy.nazwisko,
+            z.uzytkownicy.imie,
+            z.uzytkownicy.id
+        ])
     return lista_wyp
+def czytajDaneFiltr1(nr_inw):
+    lista_wyp1 = []
+    rekordy = Sprzety.select().where(Sprzety.id==nr_inw)
+    for r in rekordy:
+        lista_wyp1.append([
+            r.id,
+            r.nazwa,
+            r.opis,
+            r.uzytkownicy.nazwisko,
+            r.uzytkownicy.imie,
+            r.uzytkownicy_id ])
+    return lista_wyp1
 
-pola = ['Nr inwentarzowy', 'Nazwa', 'Opis', 'Zrobione', ]
+pola = ['Nr inwent.', 'Nazwa', 'Opis', 'Nazwisko','Imie','id uzytkownika']

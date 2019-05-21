@@ -9,14 +9,23 @@ class Wyposazenie(QWidget, Ui_Widget):
         super(Wyposazenie, self).__init__(parent)
         self.setupUi(self)
         self.btnKoniec.clicked.connect(self.koniec)
-        self.btnDalej.clicked.connect(self.dalej)
+        self.btnAll.clicked.connect(self.all)
         self.btnDodaj.clicked.connect(self.dodaj)
+        self.btnSzukaj.clicked.connect(self.szukaj_nr_inw)
     def dodaj(self):
         '''dodawanie nowego wpisu'''
+    def szukaj_nr_inw(self):
+        if (self.lneWprowadz.text()):
+            w = baza.czytajDaneFiltr1(self.lneWprowadz.text())
+            model.aktualizuj(w)
+            model.layoutChanged.emit()
+            self.odswiezWidok()
+        else:
+            print("wprowadz nr inw")
 
     def koniec(self):
         self.close()
-    def dalej(self):
+    def all(self):
             wyp = baza.czytajDane()
             model.aktualizuj(wyp)
             model.layoutChanged.emit()
@@ -25,7 +34,7 @@ class Wyposazenie(QWidget, Ui_Widget):
         self.tblViewDzialy1.resizeColumnsToContents()
         self.tblViewDzialy1.horizontalHeader().setStretchLastSection(True)
         self.tblViewDzialy1.setModel(model)  # przekazanie modelu do widoku
-        self.tblViewDzialy1.hideColumn(3) #ukrycie kolumn id (0)
+        #self.tblViewDzialy1.hideColumn(3) #ukrycie kolumn id (0)
 
 if __name__ == '__main__':
     import sys
@@ -33,9 +42,8 @@ if __name__ == '__main__':
     baza.polacz(baza.baza)
     model = TabModel(baza.pola)
     oknoGlowne = Wyposazenie()
-    oknoGlowne.dalej()
+    oknoGlowne.all()
     oknoGlowne.show()
     oknoGlowne.move(350, 200)
-
     sys.exit(app.exec_())
 
