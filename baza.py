@@ -22,7 +22,6 @@ class Sprzety(sprzety):
 
 if not baza.is_closed():
     baza.close()
-
 # ========= funkcja polacz =============
 def polacz(nazwa_bazy_danych):
     if nazwa_bazy_danych.connect(): #nawiązujemy polaczenie z bazą danych
@@ -38,6 +37,7 @@ def czytajDane():
             z.id,
             z.nazwa,
             z.opis,
-            z.uzytkownicy_id
-        ])
+            z.uzytkownicy_id ])
     return lista_wyp
+
+pola = ['Nr inwentarzowy', 'Nazwa', 'Opis', 'Zrobione', ]

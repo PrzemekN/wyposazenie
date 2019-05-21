@@ -28,5 +28,14 @@ class TabModel(QAbstractTableModel):
         j = index.column()
         if rola == Qt.DisplayRole:
             return '{0}'.format(self.tabela[i][j])
+        #else:
+        #    return #QVariant
+
+    def headerData(self, sekcja, kierunek, rola=Qt.DisplayRole):
+        """ Zwraca nagłówki kolumn """
+        if rola == Qt.DisplayRole and kierunek == Qt.Horizontal:
+            return self.pola[sekcja]
+        elif rola == Qt.DisplayRole and kierunek == Qt.Vertical:
+            return sekcja + 1
         else:
-            return QVariant
+            return QVariant()
