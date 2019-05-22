@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QMessageBox, QInputDialog
 from tabmodel import TabModel
 from gui import *
 import baza
+import uzytkownicy
 
 class Wyposazenie(QWidget, Ui_Widget):
     def __init__(self, parent=None):
@@ -12,6 +13,14 @@ class Wyposazenie(QWidget, Ui_Widget):
         self.btnAll.clicked.connect(self.all)
         self.btnDodaj.clicked.connect(self.dodaj)
         self.btnSzukaj.clicked.connect(self.szukaj_nr_inw)
+        self.btnUzytkownicy.clicked.connect(self.btnUzytkownicyClick)
+
+# metoda wywolywana po nacisnieciu przycisku btnUzytkownicy
+    def btnUzytkownicyClick(self):
+        self.oknoUzytkownicy = uzytkownicy.Uzytkownicy()
+        self.oknoUzytkownicy.show()
+        self.oknoUzytkownicy.move(360, 230)
+
     def dodaj(self):
         '''dodawanie nowego wpisu'''
     def szukaj_nr_inw(self):
