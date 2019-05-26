@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QLineEdit
 class Ui_Widget(object):
     def setupUi(self, Widget):
         Widget.setObjectName("Widget")
-        self.tblViewDzialy1= QTableView()
+        self.tblViewSprzety= QTableView()
         self.btnKoniec = QPushButton("Koniec")
         self.btnAll = QPushButton("pokaz Sprzet")
         self.btnSzukaj = QPushButton("Szukaj nr inw")
@@ -29,7 +29,7 @@ class Ui_Widget(object):
 
         ukladOkna = QVBoxLayout(self)
         ukladOkna.addLayout(uklSzukaj)
-        ukladOkna.addWidget(self.tblViewDzialy1)
+        ukladOkna.addWidget(self.tblViewSprzety)
         ukladOkna.addLayout(ukladPrzyciskow)
 
         self.setWindowTitle("Wyposazenie")

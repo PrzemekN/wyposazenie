@@ -55,5 +55,15 @@ def czytajDaneFiltr1(nr_inw):
             r.uzytkownicy.imie,
             r.uzytkownicy_id ])
     return lista_wyp1
-
-pola = ['Nr inwent.', 'Nazwa', 'Opis', 'Nazwisko','Imie','id uzytkownika']
+# ------------------------------------------------------------------------
+# robimy select sposobem peewee na tabeli Uzytkownicy
+def czytajUzytkownicy():
+    lista_wypel = []
+    rekordy = Uzytkownicy.select()
+    for r in rekordy:
+        lista_wypel.append([r.id,r.imie,r.nazwisko,r.dzialy_id,r.stanowiska_id])
+    return lista_wypel
+# ------------------------------------------------------------------------
+# Nazwy kolumn jakie maja sie pokazać w wyswietlanych tabelkach
+polaSprzety = ['Nr inwent.', 'Nazwa', 'Opis', 'Nazwisko','Imie','id uzytkownika']
+polaUzytkownicy= ["Id","Imie","Nazwisko","dzialy_id","stanowiska_id"]
