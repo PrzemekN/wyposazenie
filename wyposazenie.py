@@ -14,14 +14,12 @@ class Wyposazenie(QWidget, Ui_Widget):
         self.btnDodaj.clicked.connect(self.dodaj)
         self.btnSzukaj.clicked.connect(self.szukaj_nr_inw)
         self.btnUzytkownicy.clicked.connect(self.btnUzytkownicyClick)
-
 # metoda wywolywana po nacisnieciu przycisku btnUzytkownicy
     def btnUzytkownicyClick(self):
         self.oknoUzytkownicy = uzytkownicy.Uzytkownicy()
         #self.oknoUzytkownicy.wszystkieRecUzytkownicy()
         self.oknoUzytkownicy.show()
         self.oknoUzytkownicy.move(360, 230)
-
     def dodaj(self):
         '''dodawanie nowego wpisu'''
     def szukaj_nr_inw(self):
@@ -32,7 +30,6 @@ class Wyposazenie(QWidget, Ui_Widget):
             self.odswiezWidok()
         else:
             print("wprowadz nr inw")
-
     def koniec(self):
         self.close()
     def wszystkieRecSprzety(self):
@@ -46,7 +43,6 @@ class Wyposazenie(QWidget, Ui_Widget):
         self.tblViewSprzety.setModel(modelSprzety)  # przekazanie modelu do widoku
         #self.tblViewSprzety.hideColumn(3) #ukrycie kolumn id (0)
 # ---------------------------------------------------------------------------------------
-
 # ---------------------------------------------------------------------------------------
 if __name__ == '__main__':
     import sys

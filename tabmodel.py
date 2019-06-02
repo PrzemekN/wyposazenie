@@ -9,7 +9,7 @@ class TabModel(QAbstractTableModel):
 
     def aktualizuj(self, dane):
         #Przypisuje zrodlo danych do modelu
-        #print(dane) #w celach testowych
+        print(dane) #w celach testowych
         self.tabela = dane
 
     def rowCount(self, parent=QModelIndex()):
